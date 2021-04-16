@@ -4,7 +4,7 @@ import sys
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
-def main():
+def main() -> None:
     message = input("Enter message: ")
     key = "LFWOAYUISVKMNXPBDCRJTQEGHZ"
     resp = input("Encrypt/Decrypt [e/d]: ")
@@ -18,7 +18,7 @@ def main():
         mode = "decrypt"
         translated = decryptMessage(key, message)
 
-    print("\n{}ion: \n{}".format(mode.title(), translated))
+    print(f"\n{mode.title()}ion: \n{translated}")
 
 
 def checkValidKey(key: str) -> None:
@@ -68,7 +68,7 @@ def translateMessage(key: str, message: str, mode: str) -> str:
     return translated
 
 
-def getRandomKey():
+def getRandomKey() -> str:
     key = list(LETTERS)
     random.shuffle(key)
     return "".join(key)

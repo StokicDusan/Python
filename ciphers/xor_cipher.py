@@ -28,7 +28,7 @@ class XORCipher:
         # private field
         self.__key = key
 
-    def encrypt(self, content: str, key: int) -> [str]:
+    def encrypt(self, content: str, key: int) -> list[str]:
         """
         input: 'content' of type string and 'key' of type int
         output: encrypted string 'content' as a list of chars
@@ -53,7 +53,7 @@ class XORCipher:
 
         return ans
 
-    def decrypt(self, content: str, key: int) -> [str]:
+    def decrypt(self, content: str, key: int) -> list[str]:
         """
         input: 'content' of type list and 'key' of type int
         output: decrypted string 'content' as a list of chars
@@ -141,14 +141,14 @@ class XORCipher:
         assert isinstance(file, str) and isinstance(key, int)
 
         try:
-            with open(file, "r") as fin:
+            with open(file) as fin:
                 with open("encrypt.out", "w+") as fout:
 
                     # actual encrypt-process
                     for line in fin:
                         fout.write(self.encrypt_string(line, key))
 
-        except IOError:
+        except OSError:
             return False
 
         return True
@@ -166,14 +166,14 @@ class XORCipher:
         assert isinstance(file, str) and isinstance(key, int)
 
         try:
-            with open(file, "r") as fin:
+            with open(file) as fin:
                 with open("decrypt.out", "w+") as fout:
 
                     # actual encrypt-process
                     for line in fin:
                         fout.write(self.decrypt_string(line, key))
 
-        except IOError:
+        except OSError:
             return False
 
         return True
